@@ -38,7 +38,7 @@ for turn in range(4):
     else:
         if (guess_row < 1 or guess_row > 5) or (guess_col < 1 or guess_col > 5):
             print "Oops, that's not even in the ocean."
-        elif(board[guess_row][guess_col] == "X"):
+        elif(board[(guess_row-1)][(guess_col-1)] == "X"):
             print "You guessed that one already."
         else:
             print "You missed my battleship!"
