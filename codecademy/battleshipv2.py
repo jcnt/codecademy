@@ -29,12 +29,20 @@ def random_row(board):
 def random_col(board):
     return randint(0, len(board[0]) - 1)
 
+# init multiple battles
 ship_row = []
 ship_col = []
-for row in range(4):
+while len(ship_row) < 4:
     row = random_row(board) + 1
     col = random_col(board) + 1
+    if row in ship_row:
+    	rmatch = ship_row.index(row)
+	if col in ship_col:
+    		cmatch = ship_col.index(col)
+		if rmatch == cmatch:
+			continue
     ship_row.append(row)
+    ship_col.append(col)
 
 #ship_row = random_row(board) + 1
 #ship_col = random_col(board) + 1
@@ -50,9 +58,14 @@ for turn in range(4):
     guess_row = int(raw_input("Guess Row:"))
     guess_col = int(raw_input("Guess Col:"))
 
-    if guess_row == ship_row and guess_col == ship_col:
-        print "Congratulations! You sunk my battleship!"
-        break
+    if guess_row in ship_row and guess_col in ship_col:
+    	print ship_row.index(guess_row)
+    	print ship_col.index(guess_col)
+	if ship_row.index(guess_row) == ship_col.index(guess_col):
+            print "Congratulations! You sunk my battleship!"
+            break
+	else:
+	    continue
     else:
         if (guess_row < 1 or guess_row > 5) or (guess_col < 1 or guess_col > 5):
             print "Oops, that's not even in the ocean."
