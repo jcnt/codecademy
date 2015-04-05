@@ -6,6 +6,8 @@ redact = gets.chomp
 words = text.split(" ")
 red = redact.split(" ")
 
+#NEEDFIX
+
 words.each do |word|
     red.each do |reda|
         if word == reda
